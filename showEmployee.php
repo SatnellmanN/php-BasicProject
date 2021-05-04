@@ -20,12 +20,19 @@
       $sql = "SELECT id,firstname,lastname,email FROM employee";
       $result = $conn->query($sql);
 
+session_start();
+if(isset($_SESSION["ssusername"])) {
+
+
 ?>
 <style>
       .txtCenter {text-align:center;}
 </style>
 <body>
 <form class="modal-content" method="post" action="">
+<div style="width:100%;text-align:right">
+sessin Id : <?php echo $_SESSION['ssusername']  ?>
+</div>
 <h1>All Employees</h1>
 
     <table border="1">
@@ -52,5 +59,10 @@
     <a href="index.php">Back</a>
     </form>
 </body>
-
+<?php
+}else {
+    echo "<h1>Please login first .</h1>";
+    header( "refresh:2;url=loginpage.php" );
+}
+?>
 </html>

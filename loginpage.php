@@ -12,7 +12,10 @@
     text-align: center;
 }
 </style>
-
+<?php
+session_start();
+if(!isset($_SESSION["ssusername"])) {
+?>
 <body>
 
     <br>
@@ -30,14 +33,15 @@
         <br>
         <br>
         <button type="submit">Login</button>
-        <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
         <br><br>
         <a href="CreateAccount.php">Register</a>
     </div>
     </form>
 
 </body>
-
+<?php
+}else {
+    header( "Location:index.php" );
+}
+?>
 </html>

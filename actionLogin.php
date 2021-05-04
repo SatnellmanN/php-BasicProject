@@ -18,8 +18,13 @@
       $result = $conn->query($sql);
       if ($result->num_rows > 0) {
         //echo $result;
-        //session_start();
-        //$_SESSION['ssusername'] = $rowlogin['user'];  
+        session_start();
+        while($row = $result->fetch_assoc()) {
+            
+            $_SESSION['ssusername'] = $row['username'];  
+
+        }
+        
 
         header( "Location:index.php" );
       } else {

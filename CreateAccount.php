@@ -7,10 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<?php
+session_start();
+if(isset($_SESSION["ssusername"])) {
+?>
 
 <body>
 
     <form class="modal-content" method="post" action="actionRegisForm.php">
+    <div style="width:100%;text-align:right">
+sessin Id : <?php echo $_SESSION['ssusername']  ?>
+</div>
         <div class="container">
             <h1>Sign Up</h1>
             <p>Please fill in this form to create an account.</p>
@@ -36,5 +43,10 @@
 
 
 </body>
-
+<?php
+}else {
+    echo "<h1>Please login first .</h1>";
+    header( "refresh:2;url=loginpage.php" );
+}
+?>
 </html>

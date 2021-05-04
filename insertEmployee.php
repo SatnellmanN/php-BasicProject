@@ -7,9 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
+<?php
+session_start();
+if(isset($_SESSION["ssusername"])) {
+?>
 <body>
 <form class="modal-content" method="post" action="actionInsert.php">
+<div style="width:100%;text-align:right">
+sessin Id : <?php echo $_SESSION['ssusername']  ?>
+</div>
     <table>
         <thead>
             <tr>
@@ -53,5 +59,10 @@
     <a href="index.php">Back</a>
     </form>
 </body>
-
+<?php
+}else {
+    echo "<h1>Please login first .</h1>";
+    header( "refresh:2;url=loginpage.php" );
+}
+?>
 </html>
